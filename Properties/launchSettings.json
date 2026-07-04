@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PCDiagnosticTool (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PCDiagnosticTool (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

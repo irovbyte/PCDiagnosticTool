@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="PCDiagnosticTool.Pages.LogsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Required"
+    mc:Ignorable="d">
+
+    <Grid Padding="24" RowSpacing="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Style="{StaticResource TitleTextBlockStyle}"
+            Text="Логи системы" />
+
+        <StackPanel
+            Grid.Row="1"
+            Orientation="Horizontal"
+            Spacing="16">
+            <Button
+                Click="BtnOpenLogFolder_Click"
+                Content="Открыть папку с логами"
+                Style="{StaticResource AccentButtonStyle}" />
+            <Button Click="BtnRefreshLogs_Click" Content="Обновить" />
+        </StackPanel>
+
+        <TextBox
+            x:Name="TxtCurrentLog"
+            Grid.Row="2"
+            AcceptsReturn="True"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            FontFamily="Consolas"
+            IsReadOnly="True"
+            TextWrapping="Wrap" />
+    </Grid>
+</Page>

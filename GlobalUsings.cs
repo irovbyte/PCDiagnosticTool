@@ -1,0 +1,13 @@
+global using System.Collections.ObjectModel;
+global using System.Collections.Specialized;
+global using System.ComponentModel;
+global using System.Diagnostics;
+global using System.Diagnostics.Eventing.Reader;
+global using System.Runtime.CompilerServices;
+global using LibreHardwareMonitor.Hardware;
+global using Microsoft.UI;
+global using Microsoft.UI.Xaml;
+global using Microsoft.UI.Xaml.Controls;
+global using Microsoft.UI.Xaml.Media;
+global using Windows.Foundation;
+global using Windows.UI;

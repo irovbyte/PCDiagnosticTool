@@ -64,13 +64,20 @@ public sealed partial class DashboardPage : Page, IDisposable
                 existingSensor.Value = freshSensor.Value;
                 existingSensor.AddHistoryRecord(freshSensor.Value ?? 0.0);
 
-                CheckForCriticalPeak(existingHw.Name, existingSensor);
+                CheckForCriticalPeak(existingHw, existingSensor);
             }
         }
     }
 
-    private void CheckForCriticalPeak(string hardwareName, SensorNode sensor)
+    private void CheckForCriticalPeak(HardwareNode hardware, SensorNode sensor)
     {
+        // Игнорируем датчики материнской платы и контроллеров SuperIO, 
+        // так как они часто имеют "глухие" контакты и показывают 100+ градусов
+        if ((hardware.HardwareType == "SuperIO" || hardware.HardwareType == "Motherboard") && sensor.Type == "Temperature")
+        {
+            return;
+        }
+
         var isCritical = false;
         var description = "";
 
@@ -89,7 +96,7 @@ public sealed partial class DashboardPage : Page, IDisposable
         {
             var peak = new CriticalPeak
             {
-                ComponentName = $"{hardwareName} - {sensor.Name}",
+                ComponentName = $"{hardware.Name} - {sensor.Name}",
                 Timestamp = DateTime.Now.ToString("HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture),
                 Description = description
             };
